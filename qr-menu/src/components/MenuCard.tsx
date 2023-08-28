@@ -19,7 +19,7 @@ const MenuCard = ({
                      className="h-full w-full object-cover object-center"/>
             </div>
 
-            <div className="ml-4 flex flex-1 flex-col py-6 px-2.5">
+            <div className="ml-4 flex flex-1 flex-col py-3 px-2.5">
                 <div className=" pb-1.5">
                     <div className="flex justify-between text-base font-medium text-component-header font-sans">
                         <h3>
@@ -34,8 +34,8 @@ const MenuCard = ({
 
                     <div className="flex    ">
                         <button
-                            className=' bg-component-header border-2 border-solid border-gray-700 rounded-lg  hover:mt-0.5  text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'> Masa
-                            Ekle
+                            className=' bg-component-header border-2 border-solid border-gray-700 rounded-lg  hover:mt-0.5  text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'>
+                            Masaya Ekle
                         </button>
                     </div>
                 </div>
