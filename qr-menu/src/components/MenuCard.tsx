@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { FaRegPlusSquare } from 'react-icons/fa';
+import { FaRegMinusSquare } from 'react-icons/fa';
 type Props = {
     name: string;
     dsc: string;
@@ -19,8 +20,8 @@ const MenuCard = ({
                      className="h-full w-full object-cover object-center"/>
             </div>
 
-            <div className="ml-4 flex flex-1 flex-col py-3 px-2.5">
-                <div className=" pb-1.5">
+            <div className="ml-4 flex flex-1 flex-col py-3 pr-1.5">
+                <div className=" ">
                     <div className="flex justify-between text-base font-medium text-component-header font-sans">
                         <h3>
                             <a href="#">{name}</a>
@@ -29,10 +30,16 @@ const MenuCard = ({
                     </div>
                     <p className="mt-1 text-sm text-gray-500 font-serif  text-ellipsis  overflow-hidden ">{dsc}</p>
                 </div>
-                <div className="flex flex-1 items-center justify-between text-sm">
-                    <p className="text-gray-500">Qty 1</p>
+                <div className="flex flex-1 items-center justify-between text-sm text-component-header">
+                    <div className="flex  items-center justify-between ">
+                    <button  className='icon_btn'  > <FaRegMinusSquare fontSize={18}/></button>
+                        <div>
+                            <span className="text-lg px-0.5" >{5}</span>
 
-                    <div className="flex    ">
+                        </div>
+                    <button className='icon_btn' ><FaRegPlusSquare fontSize={18}/></button>
+                    </div>
+                    <div className="flex ">
                         <button
                             className=' bg-component-header border-2 border-solid border-gray-700 rounded-lg  hover:mt-0.5  text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'>
                             Masaya Ekle
