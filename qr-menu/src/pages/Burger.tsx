@@ -1,8 +1,9 @@
 "use client";
 
 import React, {useEffect, useState} from 'react'
+
 const Burger = () => {
-    const [items,setItems]=useState()
+    const [items, setItems] = useState()
 
     useEffect(() => {
         fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/breakfast`)
@@ -13,7 +14,7 @@ const Burger = () => {
                 console.log(items)
             })
 
-    },[items]);
+    }, []);
     return (
         <div>Burger</div>
     )

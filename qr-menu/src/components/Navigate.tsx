@@ -19,7 +19,10 @@ const Navigate = () => {
                     </div>
                     <div className='flex m-2.5 max-[1024px]:hidden'>
                         <li className="m-2.5 ">
-                            <button  className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'> Masa Ekle</button>
+                            <button
+                                className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'> Masa
+                                Ekle
+                            </button>
                         </li>
                         <li className="m-2.5">
                             <button  className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'> Masayı Görüntüle</button>
