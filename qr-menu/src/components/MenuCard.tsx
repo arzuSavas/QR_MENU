@@ -6,12 +6,18 @@ type Props = {
     dsc: string;
     img: any;
     price: number;
+    quantity:number;
+    handleIncrementAmount:(event: React.MouseEvent<HTMLButtonElement>,amount:number,value:string)=>void;
+    handleDecrementAmount:(event: React.MouseEvent<HTMLButtonElement>,amount:number,value:string)=>void;
 }
 const MenuCard = ({
                       name,
                       dsc,
                       img,
-                      price
+                      price,
+                      quantity,
+                      handleIncrementAmount,
+                      handleDecrementAmount
                   }: Props) => {
     return (
         <div className="flex  shadow-menu-cart bg-white  ">
@@ -32,12 +38,12 @@ const MenuCard = ({
                 </div>
                 <div className="flex flex-1 items-center justify-between text-sm text-component-header">
                     <div className="flex  items-center justify-between ">
-                    <button  className='icon_btn'  > <FaRegMinusSquare fontSize={18}/></button>
+                    <button  className='icon_btn' onClick={(e)=>handleDecrementAmount(e,quantity,name)} > <FaRegMinusSquare fontSize={18}/></button>
                         <div>
-                            <span className="text-lg px-0.5" >{5}</span>
+                            <span className="text-lg px-0.5" >{quantity}</span>
 
                         </div>
-                    <button className='icon_btn' ><FaRegPlusSquare fontSize={18}/></button>
+                    <button className='icon_btn' onClick={(e)=>handleIncrementAmount(e,quantity,name)} ><FaRegPlusSquare fontSize={18}/></button>
                     </div>
                     <div className="flex ">
                         <button

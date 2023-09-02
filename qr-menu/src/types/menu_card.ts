@@ -3,4 +3,5 @@ export type IMenuCard ={
     dsc:string;
     price:number;
     img:any;
+    quantity:number;
 }
