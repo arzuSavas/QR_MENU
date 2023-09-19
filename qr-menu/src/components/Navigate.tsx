@@ -2,9 +2,17 @@
 import React, { useState } from 'react';
 import {GiHamburgerMenu,GiRoundTable} from 'react-icons/gi';
 import {MdRestaurantMenu} from 'react-icons/md';
+import TableList from "@/components/TableList";
 const Navigate = () => {
-    const [toggleMenu,SetToggleMenu]=useState(false);
+    const [toggleMenu,setToggleMenu]=useState(false);
+    const [open,setOpen]=useState(false);
+    const handleOpenModel = () => {
+        setOpen(true);
+    };
 
+    const handleCloseModel = () => {
+        setOpen(false);
+    };
     return (
         <div>
             <div className=' sticky top-0 bg-nav-color max-[1024px]:flex max-[1024px]:flex-row-reverse max-[1024px]:items-center max-[1024px]:justify-between '>
@@ -20,8 +28,10 @@ const Navigate = () => {
                     <div className='flex m-2.5 max-[1024px]:hidden'>
                         <li className="m-2.5 ">
                             <button
-                                className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'> Masa
-                                Ekle
+                                className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
+                                onClick={handleOpenModel}
+                            >
+                                Masa Seç
                             </button>
                         </li>
                         <li className="m-2.5">
@@ -35,18 +45,22 @@ const Navigate = () => {
             <div className='small_menu  sm:block lg:hidden sticky top-0 bg-nav-color '>
                 <div className='small_menu_list flex items-center justify-between  '>
                     {!toggleMenu  &&(
-                        <div><GiHamburgerMenu color='#fff' style={{marginLeft:7}} fontSize={27} onClick={()=>SetToggleMenu(true)} /> </div>
+                        <div><GiHamburgerMenu color='#fff' style={{marginLeft:7}} fontSize={27} onClick={()=>setToggleMenu(true)} /> </div>
                     )}
 
                     {toggleMenu &&(
                         <div>
-                            <MdRestaurantMenu color='#fff' style={{marginLeft:7}} fontSize={27} onClick={()=>SetToggleMenu(false)}/>
+                            <MdRestaurantMenu color='#fff' style={{marginLeft:7}} fontSize={27} onClick={()=>setToggleMenu(false)}/>
 
                         </div>
                     )}
                     <div className='flex m-2.5 list-none'>
                         <li className="m-2.5 ">
-                            <button  className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'> Masa Ekle</button>
+                            <button  className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
+                                     onClick={handleOpenModel}
+                            >
+                                Masa Seç
+                            </button>
                         </li>
                         <li className="m-2.5">
                             <button  className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'> Masayı Görüntüle</button>
@@ -69,6 +83,14 @@ const Navigate = () => {
                     </div>
                 )}
             </div>
+
+            {open?
+                <TableList
+                    onOpenModel={handleOpenModel}
+                    onCloseModel={handleCloseModel}
+                />
+
+                :""}
         </div>
 
 

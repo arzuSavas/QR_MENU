@@ -5,10 +5,9 @@ import {IMenuCard} from "@/types/menu_card";
 
 const BreakFast = () => {
     const [data, setData] = useState<IMenuCard[]>([])
-    const [quantity, setQuantity] =useState<number>(1)
 
 
-    const handleIncrementAmount=(event: React.MouseEvent<HTMLButtonElement>,amount:number,value:string)=>{
+    const handleIncrementAmount=(event: React.MouseEvent<HTMLButtonElement>,value:string)=>{
 
         setData((prevData) =>
             prevData.map((item) =>
@@ -16,7 +15,7 @@ const BreakFast = () => {
             )
         );
     }
-    const handleDecrementAmount=(event: React.MouseEvent<HTMLButtonElement>,amount:number,value:string)=>{
+    const handleDecrementAmount=(event: React.MouseEvent<HTMLButtonElement>,value:string)=>{
             setData((prevData) =>
                 prevData.map((item) =>
                     item.name === value && item.quantity>1? { ...item, quantity: item.quantity - 1 } : item

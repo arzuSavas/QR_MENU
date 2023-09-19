@@ -7,8 +7,8 @@ type Props = {
     img: any;
     price: number;
     quantity:number;
-    handleIncrementAmount:(event: React.MouseEvent<HTMLButtonElement>,amount:number,value:string)=>void;
-    handleDecrementAmount:(event: React.MouseEvent<HTMLButtonElement>,amount:number,value:string)=>void;
+    handleIncrementAmount:(event: React.MouseEvent<HTMLButtonElement>,value:string)=>void;
+    handleDecrementAmount:(event: React.MouseEvent<HTMLButtonElement>,value:string)=>void;
 }
 const MenuCard = ({
                       name,
@@ -32,18 +32,18 @@ const MenuCard = ({
                         <h3>
                             <a href="#">{name}</a>
                         </h3>
-                        <p className="ml-4">${price}</p>
+                        <p className="ml-4">${quantity*price}</p>
                     </div>
                     <p className="mt-1 text-sm text-gray-500 font-serif  text-ellipsis  overflow-hidden ">{dsc}</p>
                 </div>
                 <div className="flex flex-1 items-center justify-between text-sm text-component-header">
                     <div className="flex  items-center justify-between ">
-                    <button  className='icon_btn' onClick={(e)=>handleDecrementAmount(e,quantity,name)} > <FaRegMinusSquare fontSize={18}/></button>
+                    <button  className='icon_btn' onClick={(e)=>handleDecrementAmount(e,name)} > <FaRegMinusSquare fontSize={18}/></button>
                         <div>
                             <span className="text-lg px-0.5" >{quantity}</span>
 
                         </div>
-                    <button className='icon_btn' onClick={(e)=>handleIncrementAmount(e,quantity,name)} ><FaRegPlusSquare fontSize={18}/></button>
+                    <button className='icon_btn' onClick={(e)=>handleIncrementAmount(e,name)} ><FaRegPlusSquare fontSize={18}/></button>
                     </div>
                     <div className="flex ">
                         <button

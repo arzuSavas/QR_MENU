@@ -21,6 +21,7 @@ module.exports = {
                 'btn-color': '#fbeee0',
                 'component-header': '#422800',
                 'app-bg': '#fbeee0',
+                'app-bg2':'rgb(253 247 241)',
             },
             boxShadow: {
                 'btn': '4px 4px 0 0 #422800',
@@ -29,6 +30,7 @@ module.exports = {
                 'menu-cart': 'rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px',
             },
         },
+
     },
     plugins: [],
 }
