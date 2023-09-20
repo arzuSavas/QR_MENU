@@ -5,13 +5,13 @@ import {MdRestaurantMenu} from 'react-icons/md';
 import TableList from "@/components/TableList";
 const Navigate = () => {
     const [toggleMenu,setToggleMenu]=useState(false);
-    const [open,setOpen]=useState(false);
-    const handleOpenModel = () => {
-        setOpen(true);
+    const [openTableModal,setOpenTableModal]=useState(false);
+    const handleOpenTableModel = () => {
+        setOpenTableModal(true);
     };
 
-    const handleCloseModel = () => {
-        setOpen(false);
+    const handleCloseTableModel = () => {
+        setOpenTableModal(false);
     };
     return (
         <div>
@@ -25,17 +25,22 @@ const Navigate = () => {
                         <li className="m-2.5"><a className="text-navigate-color font-semibold" href="#">Tatlılar</a></li>
                         <li className="m-2.5"> <a className="text-navigate-color font-semibold" href="#">Dondurmalar</a></li>
                     </div>
-                    <div className='flex m-2.5 max-[1024px]:hidden'>
+                    <div className='flex m-2.5 max-[1024px]:hidden relative'>
                         <li className="m-2.5 ">
                             <button
                                 className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
-                                onClick={handleOpenModel}
+                                onClick={handleOpenTableModel}
                             >
                                 Masa Seç
                             </button>
                         </li>
                         <li className="m-2.5">
                             <button  className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'> Masayı Görüntüle</button>
+
+                        </li>
+                        <li>
+                            <span className=" absolute top-0 right-0 px-2 bg-component-header text-white rounded-full text-sm">3</span>
+
                         </li>
                     </div>
 
@@ -57,7 +62,7 @@ const Navigate = () => {
                     <div className='flex m-2.5 list-none'>
                         <li className="m-2.5 ">
                             <button  className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
-                                     onClick={handleOpenModel}
+                                     onClick={handleOpenTableModel}
                             >
                                 Masa Seç
                             </button>
@@ -84,10 +89,10 @@ const Navigate = () => {
                 )}
             </div>
 
-            {open?
+            {openTableModal?
                 <TableList
-                    onOpenModel={handleOpenModel}
-                    onCloseModel={handleCloseModel}
+                    onOpenModel={handleOpenTableModel}
+                    onCloseModel={handleCloseTableModel}
                 />
 
                 :""}
