@@ -6,6 +6,7 @@ import BreakFast from "@/pages/BreakFast";
 
 export default function Home() {
     return (
+
         <main className="flex min-h-screen flex-col bg-app-bg2  ">
             <Header/>
             <Navigate/>

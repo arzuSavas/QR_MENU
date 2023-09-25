@@ -5,22 +5,46 @@ import {IMenuCard} from "@/types/menu_card";
 
 const BreakFast = () => {
     const [data, setData] = useState<IMenuCard[]>([])
+    const [orderCard, setOrderCard] = useState<IMenuCard[]>([])
 
-
-    const handleIncrementAmount=(event: React.MouseEvent<HTMLButtonElement>,value:string)=>{
-
-        setData((prevData) =>
-            prevData.map((item) =>
-                item.name === value ? { ...item, quantity: item.quantity + 1 } : item
-            )
-        );
-    }
-    const handleDecrementAmount=(event: React.MouseEvent<HTMLButtonElement>,value:string)=>{
-            setData((prevData) =>
+    /*
+        const addOrderCard=(event: React.MouseEvent<HTMLButtonElement>,value:IMenuCard[])=>{
+            setOrderCard((prevData) =>
                 prevData.map((item) =>
-                    item.name === value && item.quantity>1? { ...item, quantity: item.quantity - 1 } : item
+                    item.name === value.name ?item:item
                 )
             );
+            console.log(value)
+        }
+    */
+    const addOrderCard = (event: React.MouseEvent<HTMLButtonElement>, value: IMenuCard) => {
+        if (orderCard.some((item) => item.name === value.name)) {
+            const updatedCart = orderCard.map((item) =>
+                item.name === value.name ? {...item, quantity: item.quantity + 1} : item
+            );
+            setOrderCard(updatedCart);
+            console.log(updatedCart)
+
+        } else {
+            setOrderCard([...orderCard, {...value}]);
+        }
+
+
+    }
+    const handleIncrementAmount = (event: React.MouseEvent<HTMLButtonElement>, value: string) => {
+        setData((prevData) =>
+            prevData.map((item) =>
+                item.name === value ? {...item, quantity: item.quantity + 1} : item
+            )
+        );
+
+    }
+    const handleDecrementAmount = (event: React.MouseEvent<HTMLButtonElement>, value: string) => {
+        setData((prevData) =>
+            prevData.map((item) =>
+                item.name === value && item.quantity > 1 ? {...item, quantity: item.quantity - 1} : item
+            )
+        );
 
     }
 
@@ -40,6 +64,7 @@ const BreakFast = () => {
                 {data?.map((breakfast: any, index: any) => (
                     <MenuCard
                         key={index}
+                        data={breakfast}
                         quantity={breakfast.quantity}
                         name={breakfast.name}
                         dsc="2 Adet Seçeceğiniz Sandviç + Patates Kızartması (Orta) + 1 L. İçecek "
@@ -47,6 +72,7 @@ const BreakFast = () => {
                         price={breakfast.price}
                         handleIncrementAmount={handleIncrementAmount}
                         handleDecrementAmount={handleDecrementAmount}
+                        onAddOrderCard={addOrderCard}
                     />
 
 
