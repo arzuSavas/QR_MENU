@@ -1,22 +1,14 @@
 "use client";
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import MenuCard from "@/components/MenuCard";
 import {IMenuCard} from "@/types/menu_card";
+import {Context, contextType} from "@/context/ContextProvider";
 
 const BreakFast = () => {
-    const [data, setData] = useState<IMenuCard[]>([])
-    const [orderCard, setOrderCard] = useState<IMenuCard[]>([])
+    const {orderCard,setOrderCard } = useContext<contextType>(Context);
 
-    /*
-        const addOrderCard=(event: React.MouseEvent<HTMLButtonElement>,value:IMenuCard[])=>{
-            setOrderCard((prevData) =>
-                prevData.map((item) =>
-                    item.name === value.name ?item:item
-                )
-            );
-            console.log(value)
-        }
-    */
+    const [data, setData] = useState<IMenuCard[]>([])
+
     const addOrderCard = (event: React.MouseEvent<HTMLButtonElement>, value: IMenuCard) => {
         if (orderCard.some((item) => item.name === value.name)) {
             const updatedCart = orderCard.map((item) =>
@@ -28,9 +20,8 @@ const BreakFast = () => {
         } else {
             setOrderCard([...orderCard, {...value}]);
         }
-
-
     }
+
     const handleIncrementAmount = (event: React.MouseEvent<HTMLButtonElement>, value: string) => {
         setData((prevData) =>
             prevData.map((item) =>

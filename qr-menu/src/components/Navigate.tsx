@@ -7,7 +7,7 @@ import OrderList from "@/components/OrderList";
 import contextProvider, {Context, contextType} from "@/context/ContextProvider";
 
 const Navigate = () => {
-    const {openOrderModal, setOpenOrderModal} = useContext<contextType>(Context);
+    const {openOrderModal, setOpenOrderModal,orderCard} = useContext<contextType>(Context);
 
     const [toggleMenu, setToggleMenu] = useState(false);
     const [openTableModal, setOpenTableModal] = useState(false);
@@ -65,11 +65,14 @@ const Navigate = () => {
                             </button>
 
                         </li>
+                        {orderCard.length>0 &&
                         <li>
                             <span
-                                className=" absolute top-0 right-0 px-2 bg-component-header text-white rounded-full text-sm">3</span>
-
+                                className=" absolute top-0 right-0 px-2 bg-component-header text-white rounded-full text-sm">
+                                {orderCard.length}
+                            </span>
                         </li>
+                        }
                     </div>
 
                 </ul>
@@ -89,7 +92,7 @@ const Navigate = () => {
 
                         </div>
                     )}
-                    <div className='flex m-2.5 list-none'>
+                    <div className='flex m-2.5 list-none relative'>
                         <li className="m-2.5 ">
                             <button
                                 className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
@@ -106,6 +109,14 @@ const Navigate = () => {
                                 Masayı Görüntüle
                             </button>
                         </li>
+                        {orderCard.length>0 &&
+                            <li>
+                            <span
+                                className=" absolute top-0 right-0 px-2 bg-component-header text-white rounded-full text-sm">
+                                {orderCard.length}
+                            </span>
+                            </li>
+                        }
                     </div>
 
                 </div>
