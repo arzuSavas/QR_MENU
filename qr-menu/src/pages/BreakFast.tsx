@@ -5,29 +5,29 @@ import {IMenuCard} from "@/types/menu_card";
 import {Context, contextType} from "@/context/ContextProvider";
 
 const BreakFast = () => {
-    const {orderCard,setOrderCard } = useContext<contextType>(Context);
+    const {orderCard, setOrderCard} = useContext<contextType>(Context);
 
     const [data, setData] = useState<IMenuCard[]>([])
 
     const addOrderCard = (event: React.MouseEvent<HTMLButtonElement>, value: IMenuCard) => {
         if (orderCard.some((item) => item.name === value.name)) {
             const updatedCart = orderCard.map((item) =>
-                item.name === value.name ? {...item, quantity: item.quantity + 1} : item
+                item.name === value.name ? {...item, quantity: item.quantity + value.quantity} : item
             );
             setOrderCard(updatedCart);
-            console.log(updatedCart)
-
         } else {
             setOrderCard([...orderCard, {...value}]);
         }
     }
 
     const handleIncrementAmount = (event: React.MouseEvent<HTMLButtonElement>, value: string) => {
-        setData((prevData) =>
-            prevData.map((item) =>
+        if (data.some((item) => item.name === value)) {
+            const updateCart = data.map((item) =>
                 item.name === value ? {...item, quantity: item.quantity + 1} : item
-            )
-        );
+            );
+            setData(updateCart)
+            console.log(updateCart.map((item) => item.quantity))
+        }
 
     }
     const handleDecrementAmount = (event: React.MouseEvent<HTMLButtonElement>, value: string) => {

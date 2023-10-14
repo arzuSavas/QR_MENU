@@ -7,17 +7,20 @@ export type contextType = {
     openOrderModal: boolean;
     setOpenOrderModal: (value: boolean) => void;
     orderCard: IMenuCard[];
-    setOrderCard: (orderCard: IMenuCard[]) => void;
-    count:number;
+    setOrderCard: (value: IMenuCard[]) => void;
+    count: number;
     setCount: (value: number) => void;
 }
 export const Context = createContext<contextType>({
     openOrderModal: false,
-    setOpenOrderModal: () => {},
-    orderCard:[],
-    setOrderCard:() => {},
-    count:1,
-    setCount:() => {},
+    setOpenOrderModal: () => {
+    },
+    orderCard: [],
+    setOrderCard: () => {
+    },
+    count: 1,
+    setCount: () => {
+    },
 });
 
 const ContextProvider = (props: { children: React.ReactNode }) => {
@@ -27,7 +30,7 @@ const ContextProvider = (props: { children: React.ReactNode }) => {
 
 
     return (
-        <Context.Provider value={{openOrderModal, setOpenOrderModal,orderCard,setOrderCard,count, setCount}}>
+        <Context.Provider value={{openOrderModal, setOpenOrderModal, orderCard, setOrderCard, count, setCount}}>
             {props.children}
         </Context.Provider>
     )
