@@ -1,14 +1,47 @@
 "use client";
 
 import React, {useEffect, useState} from 'react'
+import {ITableList} from "@/types/table_list";
 
 type Props = {
-
     onOpenModal: VoidFunction;
     onCloseModal: VoidFunction;
-
 };
 const TableList = ({onOpenModal, onCloseModal}: Props) => {
+    const [data, setData] = useState<ITableList[]>([])
+    const [selectedTable, setSelectedTable] = useState<string>("")
+
+    useEffect(() => {
+        const updateData = JSON.parse(localStorage.getItem("tableData") || "null");
+        if (updateData){
+            setData(updateData)
+        }else{
+            fetch(`http://localhost:3003/tableInfo`)
+                .then(results => results.json())
+                .then(results => {
+                    setData(results);
+                })
+        }
+    }, [selectedTable]);
+
+
+    const handleSelectedTable = (event: React.MouseEvent<HTMLButtonElement>,value:string) => {
+        setSelectedTable(selectedTable)
+        setData((prevData) =>
+            prevData.map((item) =>
+                ( item.tableNo === value ? {...item, selected:true}:item)
+            )
+        );
+        setTimeout(() => {
+            onCloseModal();  // Modal'ı kapat
+        }, 100);
+    }
+    useEffect(() => {
+        if (selectedTable.length > 0) {
+            localStorage.setItem("tableData", JSON.stringify(data));
+        }
+    }, [data]);
+
     return (
         <div>
             <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
@@ -28,101 +61,29 @@ const TableList = ({onOpenModal, onCloseModal}: Props) => {
                                     </div>
                                 </div>
                                 <div className="grid grid-cols-4 md:grid-cols-7 gap-4 mt-4 justify-items-center">
-                                    <div
-                                        className=" navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className=" bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className=" navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className=" navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className=" navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className=" navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className=" navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className=" navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
-                                    <div
-                                        className=" navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">01
-                                    </div>
-                                    <div
-                                        className="bg-component-header border-2 border-solid border-gray-700 rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none">09
-                                    </div>
+                                    {data.map((item)=>item.selected ?
+                                        <div  className=" bg-component-header border-2 border-solid border-table-button rounded-lg text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none"
+                                        >
+                                            {item.tableNo}
+                                        </div> :
+                                        <button  className=" navigate_btn bg-btn-color border-b-4 border-r-4 border-l-2 border-t-2 border-solid border-table-button rounded-lg hover:bg-component-header hover:opacity-50 hover:text-white active:bg-component-header active:opacity-50 active:text-white cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none"
+                                                 onClick={()=>setSelectedTable(item.tableNo)}
 
+                                        >
+                                            {item.tableNo}
+                                        </button>
+
+                                    )}
                                 </div>
 
                             </div>
                             <div className="bg-gray-50 px-4 py-3 sm:flex  sm:px-6 justify-between items-center">
                                 <h3 className=" font-black text-component-header font-sans text-xl"
-                                    id="modal-title">Seçilen Masa: </h3>
+                                    id="modal-title">Seçilen Masa: {selectedTable}</h3>
                                 <div className="max-[640px]:mt-3 items-center">
                                     <button type="button"
                                             className="inline-flex w-full justify-center rounded-md bg-orange-700 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:mr-3 sm:w-auto "
-                                            onClick={onCloseModal}
+                                            onClick={(e) => handleSelectedTable(e,selectedTable)}
                                     >onayla
                                     </button>
                                     <button type="button"

@@ -22,6 +22,7 @@ module.exports = {
                 'component-header': '#422800',
                 'app-bg': '#fbeee0',
                 'app-bg2':'rgb(253 247 241)',
+                'table-button':'rgb(66 40 0)',
             },
             boxShadow: {
                 'btn': '4px 4px 0 0 #422800',

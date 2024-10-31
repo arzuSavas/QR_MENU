@@ -29,7 +29,7 @@ const Navigate = () => {
         setOpenOrderModal(false);
     };
     return (
-        <div>
+        <div className=''>
             <div
                 className=' sticky top-0 bg-nav-color max-[1024px]:flex max-[1024px]:flex-row-reverse max-[1024px]:items-center max-[1024px]:justify-between '>
                 <ul className='flex items-center justify-between '>
@@ -49,7 +49,7 @@ const Navigate = () => {
                     <div className='flex m-2.5 max-[1024px]:hidden relative'>
                         <li className="m-2.5 ">
                             <button
-                                className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
+                                className='navigate_btn bg-btn-color border-2 border-solid border-table-button rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
                                 onClick={handleOpenTableModal}
                             >
                                 Masa Seç
@@ -57,7 +57,7 @@ const Navigate = () => {
                         </li>
                         <li className="m-2.5">
                             <button
-                                className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
+                                className='navigate_btn bg-btn-color border-2 border-solid border-table-button rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
                                 onClick={handleOpenOrderModal}
 
                             >
@@ -95,7 +95,7 @@ const Navigate = () => {
                     <div className='flex m-2.5 list-none relative'>
                         <li className="m-2.5 ">
                             <button
-                                className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
+                                className='  navigate_btn bg-btn-color border-2 border-solid border-table-button rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
                                 onClick={handleOpenTableModal}
                             >
                                 Masa Seç
@@ -103,7 +103,7 @@ const Navigate = () => {
                         </li>
                         <li className="m-2.5">
                             <button
-                                className='navigate_btn bg-btn-color border-2 border-solid border-gray-700 rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
+                                className='navigate_btn bg-btn-color border-2 border-solid border-table-button rounded-lg shadow-btn hover:shadow-btn-hover hover:mt-0.5 active:shadow-btn-active translate-x-px translate-y-px text-gray-700 cursor-pointer inline-block font-semibold text-base leading-9 px-2 text-center select-none'
                                 onClick={handleOpenOrderModal}
                             >
                                 Masayı Görüntüle
