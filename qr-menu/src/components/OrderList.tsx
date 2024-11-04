@@ -106,7 +106,9 @@ const OrderList = () => {
                                 </div>
                                 <div className="bg-gray-50 px-4 py-3 sm:flex  sm:px-6 justify-between items-center">
                                     <h3 className=" font-black text-component-header font-sans text-xl"
-                                        id="modal-title">toplam tutatr: </h3>
+                                        id="modal-title">toplam tutatr: ₺
+                                        { orderCard.reduce((total, order) => total + order.price*order.quantity, 0)}
+                                    </h3>
                                     <div className="max-[640px]:mt-3 items-center">
                                         <button type="button"
                                                 className="inline-flex w-full justify-center rounded-md bg-orange-700 px-3 py-2 text-sm font-semibold text-white shadow-sm sm:mr-3 sm:w-auto "

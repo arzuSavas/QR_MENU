@@ -69,7 +69,7 @@ const Navigate = () => {
                         <li>
                             <span
                                 className=" absolute top-0 right-0 px-2 bg-component-header text-white rounded-full text-sm">
-                                {orderCard.length}
+                                {orderCard.reduce((total, order) => total + order.quantity, 0)}
                             </span>
                         </li>
                         }
@@ -113,7 +113,8 @@ const Navigate = () => {
                             <li>
                             <span
                                 className=" absolute top-0 right-0 px-2 bg-component-header text-white rounded-full text-sm">
-                                {orderCard.length}
+                                {orderCard.reduce((total, order) => total + order.quantity, 0)}
+
                             </span>
                             </li>
                         }

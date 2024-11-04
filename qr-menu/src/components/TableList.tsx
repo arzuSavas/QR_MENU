@@ -12,7 +12,7 @@ const TableList = ({onOpenModal, onCloseModal}: Props) => {
     const [selectedTable, setSelectedTable] = useState<string>("")
 
     useEffect(() => {
-        const updateData = JSON.parse(localStorage.getItem("tableData") || "null");
+        const updateData = JSON.parse( localStorage.getItem("tableData") || "null");
         if (updateData){
             setData(updateData)
         }else{
